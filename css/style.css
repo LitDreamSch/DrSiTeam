@@ -1,0 +1,90 @@
+@charset "UTF-8";
+#myCarousel {
+  margin:50px 0 0 0;
+}
+
+#navCollapse ul{
+  margin-top:0px;
+}
+
+.carousel-inner img {
+  margin:0 auto;
+}
+
+.tab-h2{
+  /* font-size: 30px; */
+  text-align: center;
+  color:#0059B2;
+}
+
+.tab-p{
+  /* font-size: 15px; */
+  color:#999;
+  text-align: center;
+  letter-spacing: 1px;
+  margin:20px 0 40px 0;
+
+}
+
+.tab1{
+  color:#666;
+  margin:30px 0;
+
+}
+
+.tab1 .text-muted{
+  color:#999;
+}
+
+.tab1 .media-heading{
+  margin:5px 0 20px 0;
+}
+
+.media-left > a > img{
+  height:100px;
+  weight:100px;
+}
+
+.tab1 .col{
+  padding: 20px;
+}
+
+#footer{
+  background-color: #eee;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+/*小屏幕*/
+@media(min-width:768px){
+  .tab-h2{
+    font-size: 26px;
+  }
+
+  .tab-p{
+    font-size: 16px;
+  }
+}
+
+/*中等屏幕*/
+@media(min-width:992px){
+  .tab-h2{
+    font-size: 28px;
+  }
+
+  .tab-p{
+    font-size: 17px;
+  }
+}
+
+/*大屏幕*/
+@media(min-width:1200px){
+  .tab-h2{
+    font-size: 30px;
+  }
+
+  .tab-p{
+    font-size: 18px;
+  }
+}

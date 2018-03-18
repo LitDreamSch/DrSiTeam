@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width,inital-scale=1,maximum-scale=1,user-scalable=no">
+    <title>DrSiTeam - o(*￣▽￣*)ブ</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <!-- 顶部主导航 -->
+    <nav class="navbar navbar-default navbar-dream" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DrSiTeam</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="main-navbar">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="active"> <a href="#"><i class="glyphicon glyphicon-pawn"></i> DTower </a> </li>
+            <li> <a href="#"><i class="glyphicon glyphicon-pencil"></i> WriteDown </a> </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-hdd"></i> DService <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"> FTP </a></li>
+                <li><a href="#"> VPN </a></li>
+                <li class="divider"></li>
+                <li><a href="#"> SSH </a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="li_login"> <a href="#"><i class="glyphicon glyphicon-user"></i> Login </a> </li>
+            <li> <a href="#"><i class="glyphicon glyphicon-info-sign"></i> About </a> </li>
+          </ul>
+
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="What are you finding?">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- nav end -->
+
+    <!-- login modal -->
+    <div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="">Login</h4>
+          </div>
+          <div class="modal-body">
+            <form action="index.html" method="post">
+              <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="user" placeholder="Enter your username here." class="form-control">
+              </div>
+              <br>
+              <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="pass" placeholder="Enter your password here." class="form-control">
+                <br>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning">Forget My Account</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- login modal end -->
+    <div class="div-img-sky">
+      <img src="img/sky.png" alt="sky" class="img-responsive center-block img-main">
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js" charset="utf-8"></script>
+    <script src="js/bootstrap.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+
+      $('#li_login').on('click',function(){
+        $('#modal_login').modal({
+          backdrop:'static',
+          keyboard:'false'
+        })
+      });
+    </script>
+  </body>
+</html>
