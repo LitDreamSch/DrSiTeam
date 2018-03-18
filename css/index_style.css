@@ -9,3 +9,30 @@
   width: 100%;
   background-color: rgb(31,36,90);
 }
+
+.h1-DTower{
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+
+.div-info{
+  box-shadow: 3px 3px 5px #888888;
+  height: 1200px;
+  background: white;
+}
+
+.div-money{
+  box-shadow: 3px 3px 5px #888888;
+  height: 290px;
+  background: white;
+
+}
+
+body{
+  background: #ebebeb;
+}
+
+.table th, .table td {
+text-align: center;
+vertical-align: middle!important;
+}
