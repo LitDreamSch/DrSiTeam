@@ -36,3 +36,39 @@ body{
 text-align: center;
 vertical-align: middle!important;
 }
+
+.div-section{
+  margin-top: 50px;
+}
+
+.div-artical{
+  margin-top: 50px;
+  box-shadow: 3px 3px 5px #888888;
+  height: 324px;
+  background: white;
+}
+
+.list-group-item:first-child{
+  border-radius: 0px;
+}
+
+.list-group-item{
+  border-left: none;
+  border-right: none;
+}
+
+.list-group-item:last-child{
+  border-radius: 0px;
+}
+
+.media{
+  padding-top: 40px;
+  width: 90%;
+
+  box-shadow: 3px 3px 5px #888888;
+}
+/*小屏幕*/
+
+
+
+/* end */
