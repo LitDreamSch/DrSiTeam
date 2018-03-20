@@ -19,6 +19,7 @@
   box-shadow: 3px 3px 5px #888888;
   height: 1200px;
   background: white;
+  padding-top: 40px;
 }
 
 .div-money{
@@ -61,12 +62,74 @@ vertical-align: middle!important;
   border-radius: 0px;
 }
 
-.media{
-  padding-top: 40px;
-  width: 90%;
 
-  box-shadow: 3px 3px 5px #888888;
+.div-news:first-child{
+  box-shadow: 1px 1px 5px #F33;
 }
+
+.div-news{
+  width: 90%;
+  height: 13.5%;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+
+
+.div-news:hover{
+  box-shadow: none;
+  box-shadow: 1px 1px 2px #ccc;
+}
+
+
+.img-news{
+  height: 100%;
+  float: left;
+}
+
+.div-news-body{
+  float:left;
+  height: 100%;
+  /* background: green; */
+}
+
+.div-news-body h4{
+  margin-left: 2%;
+}
+
+.p-top{
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+  display: inline-block;
+
+}
+
+.p-news{
+  color:#888;
+  margin-bottom: 2px;
+}
+
+.btn-news{
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+.footer{
+  border-top: 2px gray solid;
+  background-color: #1d2355;
+  height:130px;
+  width: 100%;
+  line-height: 2px;
+}
+
+.footer h3{
+  color:#FFF;
+}
+.footer h4{
+  color:#FFF;
+}
+
+
 /*小屏幕*/
 
 
