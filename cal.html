@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>梦想的番茄钟计算器</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style media="screen">
+    #appframe{
+      width:80%;
+    }
+
+     .dream-btn{
+      width:100%;
+      display: block;
+    }
+
+    .result{
+      font-size: 20px;
+      color: rgb(91, 91, 91);
+    }
+    .resul{
+      font-size: 18px;
+      color: rgb(91, 91, 91);
+    }
+
+    .div-rest{
+      background:rgb(45, 250, 126);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="appframe" class="center-block">
+    <h3 class="text-center">梦想的番茄钟计算器</h3>
+
+    <div class="form-group">
+      <label>Start:</label>
+      <input type="text" class="form-control" id="" placeholder="" v-model="start">
+      <p class="help-block">Hour:Min 24</p>
+    </div>
+    <div class="form-group">
+      <label>End:</label>
+      <input type="text" class="form-control" id="" placeholder="" v-model="end">
+      <p class="help-block">Hour:Min 24</p>
+    </div>
+    <div class="form-group">
+      <label>Rest:</label>
+      <input type="text" class="form-control" id="" placeholder="" v-model="rest">
+      <p class="help-block">rest</p>
+    </div>
+    <button type="submit" class="btn btn-default dream-btn" @click="OnCalculate()">
+      Calculate
+    </button>
+    <br>
+    <button type="button" class="btn btn-warning dream-btn" @click="OnClear()">
+      Clear
+    </button>
+
+    <div v-show="start && end">
+      <hr>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="Each in TimeList">
+          <div class="container" v-if="Each.status == 'work' ">
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <p class="text-center result">{{Each.end_h}}:{{Each.end_m}}</p>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <p class="text-center result">{{Each.start_h}}:{{Each.start_m}}</p>
+            </div>
+          </div>
+          <div class="container div-rest" v-if="Each.status == 'rest' ">
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <p class="text-center result">{{Each.end_h}}:{{Each.end_m}}</p>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <p class="text-center result">{{Each.start_h}}:{{Each.start_m}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item list-group-item-success" v-show="clicked">
+          <div class="container">
+            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4">
+              <p class="resul text-center">ALL : {{alltime}}</p>
+            </div>
+            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4">
+              <p class="resul text-center">Tomato : {{worktimes}}</p>
+            </div>
+            <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4">
+              <p class="resul text-center">Rest : {{resttimes}}</p>
+            </div>
+          </div>
+
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+
+  <script src="js/jquery.min.js" charset="utf-8"></script>
+  <script src="js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="vue/vue.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+    function complementWord(word){
+      if(word.length == 1){
+        word = '0' + word;
+      }
+      return word;
+    }
+
+    function makeTimeListItem(end_h,end_m,start_h,start_m,status){
+
+      //  translate one string to two
+      start_h = complementWord(start_h);
+      start_m = complementWord(start_m);
+      end_h = complementWord(end_h);
+      end_m = complementWord(end_m);
+
+      return {'start_h':start_h,'start_m':start_m,'end_h':end_h,'end_m':end_m,'status':status};
+
+    }
+
+    var app = new Vue({
+      el:"#appframe",
+      data:{
+        start:'',
+        end:'',
+        rest:20,
+        ListNum:0,
+        TimeList:[],
+        alltime:0,
+        resttimes:0,
+        worktimes:0,
+        clicked:false
+      },
+      methods:{
+        OnClear:function(){
+          this.start = '';
+          this.end = '';
+        },
+
+        OnCalculate:function(){
+          this.TimeList = [];
+          // make start_hour and start_minute
+          this.clicked = true;
+          var start_h, start_m;
+          start_h = parseInt(this.start.split(":")[0]);
+          start_m = parseInt(this.start.split(":")[1]);
+
+          // Calculate the whole time
+          var end_h, end_m;
+          end_h = this.end.split(":")[0];
+          end_m = this.end.split(":")[1];
+          var time = (parseInt(end_h) - start_h) * 60 + parseInt(end_m) - start_m;
+          this.alltime = time;
+          // start making date
+          var cnt = 0; // cnt is used to calculate if i can rest
+          var last_h, last_m;
+
+          while (time >= 25) {
+
+            if (cnt == 4) { // it's time to rest
+              cnt = 0;
+              time -= parseInt(this.rest);
+              last_h = start_h;
+              last_m = start_m;
+              this.resttimes +=1;
+
+              start_m += parseInt(this.rest);
+              if(start_m >= 60){
+                start_m -= 60;
+                start_h += 1;
+              }
+
+              data = makeTimeListItem(last_h.toString(),last_m.toString(),start_h.toString(),start_m.toString(),"rest");
+              this.TimeList.push(data)
+
+            }else { // work!!
+              cnt ++ ;
+              time -= 25;
+              last_h = start_h;
+              last_m = start_m;
+              this.worktimes +=1;
+
+              start_m += 25;
+              if(start_m >= 60){
+                start_m -= 60;
+                start_h += 1;
+              }
+              data = makeTimeListItem(last_h.toString(),last_m.toString(),start_h.toString(),start_m.toString(),"work");
+              this.TimeList.push(data)
+
+            }
+          }
+
+        }
+      },
+    });
+  </script>
+</body>
+</html>
